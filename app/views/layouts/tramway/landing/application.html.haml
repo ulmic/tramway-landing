@@ -2,7 +2,8 @@
 %html
   %head
     %meta{content: "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}
-    %title Tramway landing
+    %title
+      = yield :application_name
     = stylesheet_link_tag    "tramway/landing/application", media: "all"
     = javascript_include_tag "tramway/landing/application"
     = csrf_meta_tags
@@ -10,27 +11,8 @@
     = javascript_include_tag 'https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.4.5/js/mdb.min.js'
     = yield :head_content
   %body
-    %header
-      %nav.navbar.navbar-expand-lg.navbar-dark.indigo.fixed-top
-        = link_to yield(:application_name), '#', class: 'navbar-brand'
-
-        %button.navbar-toggler{ type: :button, data: { toggle: :collapse, target: '#navbarSupportedContent' }, aria: { controls: 'navbarSupportedContent', expanded: 'false', label: 'Toggle navigation' } }
-          = fa_icon :bars
-        .collapse.navbar-collapse#navbarSupportedContent
-          %ul.navbar-nav.mr-auto
-            = yield :navbar
-      #intro.view.hm-black-strong
-        .container-fluid.full-bg-img.d-flex.align-items-center.justify-content-center
-          .row.d-flex.justify-content-center
-            .col-md-10.text-center
-              %h2.display-3.font-bold.white-text.mb-2
-                = yield(:application_name)
-              %hr.hr-light
-              %h4.white-text.my-4
-                = yield(:application_tagline)
-              %button.btn.btn-outline-white{ type: :button }
-                Read more
-                = fa_icon :book
+    - @blocks.each do |block|
+      = render "tramway/landing/blocks/block_types/#{block.block_type}", block: block
     %main
       = yield
     %footer
