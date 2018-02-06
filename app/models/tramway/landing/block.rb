@@ -1,5 +1,5 @@
 class Tramway::Landing::Block < ::Tramway::Landing::ApplicationRecord
-  enumerize :block_type, in: [ :header ]
+  enumerize :block_type, in: [ :header, :footer ]
 
   mount_uploader :background, PhotoUploader
 
