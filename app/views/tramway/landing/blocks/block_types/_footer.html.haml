@@ -10,5 +10,4 @@
         = yield :footer_links
   .footer-copyright
     .container-fluid
-      © 2018 Copyright:
-      = link_to yield(:application_name), 'http://sportschool-ulsk.ru'
+      = link_to copyright(2018, yield(:application_name)), yield(:application_url)

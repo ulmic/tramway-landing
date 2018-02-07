@@ -6,7 +6,8 @@
       = fa_icon :bars
     .collapse.navbar-collapse#navbarSupportedContent
       %ul.navbar-nav.mr-auto
-        = yield :navbar
+        - @blocks.with_navbar_link.each do |block|
+          = menu_item block.title, "##{block.anchor}"
   #intro.view.hm-black-strong{ style: "background-image: url('#{block.background.url}')" }
     .container-fluid.full-bg-img.d-flex.align-items-center.justify-content-center
       .row.d-flex.justify-content-center
@@ -16,6 +17,6 @@
           %hr.hr-light
           %h4.white-text.my-4
             = yield(:application_tagline)
-          %button.btn.btn-outline-white{ type: :button }
-            Read more
-            = fa_icon :book
+          - @blocks.with_navbar_link.each do |block|
+            %button.btn.btn-outline-white.waves-effect.waves-light.header-buttons{ type: :button, data: { anchor: "##{block.anchor}" } }
+              = block.title

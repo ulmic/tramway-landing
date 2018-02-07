@@ -1,5 +1,6 @@
 class Tramway::Landing::Block < ::Tramway::Landing::ApplicationRecord
-  enumerize :block_type, in: [ :header, :footer ]
+  enumerize :block_type, in: [ :header, :footer, :page, :cards ]
+  enumerize :navbar_link, in: [ :exist, :not_exist ], default: :not_exist
 
   mount_uploader :background, PhotoUploader
 
@@ -17,4 +18,5 @@ class Tramway::Landing::Block < ::Tramway::Landing::ApplicationRecord
   end
 
   scope :on_main_page, -> { active.where(view_state: :published).order :position }
+  scope :with_navbar_link, -> { where navbar_link: :exist }
 end

@@ -7,10 +7,11 @@
     = stylesheet_link_tag    "tramway/landing/application", media: "all"
     = javascript_include_tag "tramway/landing/application"
     = csrf_meta_tags
-    = stylesheet_link_tag 'https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.4.5/css/mdb.min.css'
-    = javascript_include_tag 'https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.4.5/js/mdb.min.js'
     = yield :head_content
   %body
+    = stylesheet_link_tag 'https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.4.5/css/mdb.min.css'
+    = javascript_include_tag 'https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.4.5/js/mdb.js'
+    = javascript_include_tag 'https://cdn.rawgit.com/CezarLuiz0/anchor.js/master/dist/anchor.min.js'
     - @blocks.each do |block|
       = render "tramway/landing/blocks/block_types/#{block.block_type}", block: block
     %main
