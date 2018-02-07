@@ -3,7 +3,7 @@ module Tramway::Landing::PhotoVersions
 
   included do
     version :card do
-      process resize_to_fill: [400, 200, 'North']
+      process resize_to_fill: [400, 400, 'North']
     end
   end
 end
