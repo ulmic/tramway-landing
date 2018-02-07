@@ -8,4 +8,4 @@ module Tramway::Landing::PhotoVersions
   end
 end
 
-#PhotoUploader.include Tramway::Landing::PhotoVersions
+PhotoUploader.include Tramway::Landing::PhotoVersions
