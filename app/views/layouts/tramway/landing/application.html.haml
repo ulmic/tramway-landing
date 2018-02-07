@@ -12,8 +12,9 @@
     = stylesheet_link_tag 'https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.4.5/css/mdb.min.css'
     = javascript_include_tag 'https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.4.5/js/mdb.js'
     = javascript_include_tag 'https://cdn.rawgit.com/CezarLuiz0/anchor.js/master/dist/anchor.min.js'
-    - @blocks.each do |block|
-      = render "tramway/landing/blocks/block_types/#{block.block_type}", block: block
-    %main
-      = yield
-    %footer
+    = render "tramway/landing/blocks/block_types/header", block: @blocks.header
+    %main.mt-5
+      .container
+        - (@blocks - [@blocks.header] - [@blocks.footer]).each do |block|
+          = render "tramway/landing/blocks/block_types/#{block.block_type}", block: block
+    = render "tramway/landing/blocks/block_types/footer", block: @blocks.footer

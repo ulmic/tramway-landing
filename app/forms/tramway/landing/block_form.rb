@@ -1,5 +1,5 @@
 class Tramway::Landing::BlockForm < ::Tramway::Core::ApplicationForm
-  properties :title, :background, :view_state, :block_type, :position, :navbar_link, :anchor
+  properties :title, :background, :view_state, :block_type, :position, :navbar_link, :anchor, :description
 
   def initialize(object)
     form_object = super object
@@ -8,7 +8,8 @@ class Tramway::Landing::BlockForm < ::Tramway::Core::ApplicationForm
                     position: :numeric,
                     block_type: :default,
                     navbar_link: :default,
-                    anchor: :string
+                    anchor: :string,
+                    description: :default
     form_object
   end
 end
