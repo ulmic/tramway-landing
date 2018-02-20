@@ -1,5 +1,5 @@
 class Tramway::Landing::Block < ::Tramway::Landing::ApplicationRecord
-  enumerize :block_type, in: [ :header, :footer, :page, :cards, :features ]
+  enumerize :block_type, in: [ :header, :footer, :page, :cards, :features, :contacts, :news ]
   enumerize :navbar_link, in: [ :exist, :not_exist ], default: :not_exist
 
   mount_uploader :background, PhotoUploader

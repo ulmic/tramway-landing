@@ -6,4 +6,8 @@ class Tramway::Landing::BlockTypes::CardsDecorator < ::Tramway::Core::Applicatio
   def description; end
 
   def button; end
+
+  def icon; end
+
+  def path; end
 end
