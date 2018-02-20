@@ -3,7 +3,7 @@
   %head
     %meta{content: "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}
     %title
-      = yield :application_name
+      = yield :title
     = stylesheet_link_tag    "tramway/landing/application", media: "all"
     = javascript_include_tag "tramway/landing/application"
     = javascript_include_tag "https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js", integrity: "sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl", crossorigin: "anonymous"
@@ -15,9 +15,14 @@
     = stylesheet_link_tag 'https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.4.5/css/mdb.min.css'
     = javascript_include_tag 'https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.4.5/js/mdb.js'
     = javascript_include_tag 'https://cdn.rawgit.com/CezarLuiz0/anchor.js/master/dist/anchor.min.js'
-    = render "tramway/landing/blocks/block_types/header", block: @blocks.header
-    %main.mt-5
+    - if @blocks&.any?
+      = render "tramway/landing/blocks/block_types/header", block: @blocks.header
+    %main{ class: ('mt-5' if @blocks&.any?) }
       .container
-        - (@blocks - [@blocks.header] - [@blocks.footer]).each do |block|
-          = render "tramway/landing/blocks/block_types/#{block.block_type}", block: block
-    = render "tramway/landing/blocks/block_types/footer", block: @blocks.footer
+        - if @blocks&.any?
+          - (@blocks - [@blocks.header] - [@blocks.footer]).each do |block|
+            = render "tramway/landing/blocks/block_types/#{block.block_type}", block: block
+      .container-fluid
+        = yield
+    - if @blocks&.any?
+      = render "tramway/landing/blocks/block_types/footer", block: @blocks.footer
