@@ -5,7 +5,7 @@
     = block.description
   .row
     -# FIXME bad guy mode ON
-    - eval("@collection_#{block.anchor}").each do |item|
+    - eval("@collection_#{block.anchor}")&.each do |item|
       .col-lg-4.col-md-12.mb-4
         - if item.path.present?
           = link_to item.path do

@@ -1,4 +1,4 @@
-%script{ src: 'https://maps.google.com/maps/api/js?key=AIzaSyDC054dWb7cQ_mULJk3d1UBK6pN8msCx1g' }
+%script{ src: 'https://maps.google.com/maps/api/js?key=AIzaSyD4shvkgS4S4Mz-SEWbigeCQ54fHmFPxUo' }
 :javascript
   function regular_map() {
     var var_location = new google.maps.LatLng(#{yield(:latitude)}, #{yield(:longtitude)});
@@ -14,7 +14,7 @@
     var var_marker = new google.maps.Marker({
         position: var_location,
         map: var_map,
-        title: "New York"
+        title: "School"
     });
   }
   google.maps.event.addDomListener(window, 'load', regular_map);
