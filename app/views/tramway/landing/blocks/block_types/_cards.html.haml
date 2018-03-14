@@ -1,9 +1,9 @@
-.container.text-center
+.container.text-center{ id: block.anchor }
   %h2.mb-4.font-weight-bold
     = block.title
   %p.grey-text
     = block.description
-  .row{ id: block.anchor }
+  .row
     -# FIXME bad guy mode ON
     - eval("@collection_#{block.anchor}").each do |item|
       .col-lg-4.col-md-12.mb-4

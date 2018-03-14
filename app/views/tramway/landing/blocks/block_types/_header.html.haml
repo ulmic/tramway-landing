@@ -1,3 +1,4 @@
+= javascript_include_tag 'tramway/landing/smooth-scroll'
 %header
   %nav.navbar.navbar-expand-lg.navbar-dark.indigo.scrolling-navbar.fixed-top
     = link_to yield(:application_name), '#', class: 'navbar-brand'
@@ -20,3 +21,5 @@
           - @blocks.with_navbar_link.each do |block|
             %button.btn.btn-outline-white.waves-effect.waves-light.header-buttons{ type: :button, data: { anchor: "##{block.anchor}" } }
               = block.title
+  %script
+    var scroll = new SmoothScroll('a[href*="#"]');
