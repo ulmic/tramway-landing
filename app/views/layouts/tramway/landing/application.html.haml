@@ -20,8 +20,11 @@
     %main{ class: ('mt-5' if @blocks&.any?) }
       .container
         - if @blocks&.any?
-          - (@blocks - [@blocks.header] - [@blocks.footer]).each do |block|
+          - array_of_blocks = (@blocks - [@blocks.header] - [@blocks.footer]) 
+          - array_of_blocks.each_with_index do |block, index|
             = render "tramway/landing/blocks/block_types/#{block.block_type}", block: block
+            - if index < array_of_blocks.count - 1
+              %hr
       .container-fluid
         = yield
     - if @blocks&.any?
