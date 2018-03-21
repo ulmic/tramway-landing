@@ -18,7 +18,7 @@
                 %h4.card-title
                   = item.title
                 %p.card-text
-                  = item.description
+                  = strip_tags item.description
                 - if item.button.present?
                   = link_to item.button.text, item.button.url, class: 'btn btn-primary'
         - else
