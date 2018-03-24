@@ -23,7 +23,7 @@
     = block.title
   .row
     .col-lg-5.col-md-12
-      - @application.social_networks.each do |profile|
+      - @application.social_networks.active.each do |profile|
         %ul.list-group
           %li.list-group-item
             = profile_link profile
